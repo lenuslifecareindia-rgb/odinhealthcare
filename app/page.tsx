@@ -6,6 +6,15 @@ import { motion } from "framer-motion"
 import { ArrowRight, Check } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import { z } from "zod"
+import toast from "react-hot-toast"
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(7, "Phone number is required"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+})
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -21,11 +30,41 @@ export default function Home() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    setFormData({ name: "", email: "", phone: "", message: "" })
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+
+  const validation = contactSchema.safeParse(formData)
+
+  if (!validation.success) {
+    const firstError = validation.error.errors[0]?.message
+    toast.error(firstError || "Invalid form inputs")
+    return
   }
+
+  toast.loading("Sending message...")
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+
+    const data = await res.json()
+    toast.dismiss()
+
+    if (data.success) {
+      toast.success("Message sent successfully!")
+      setFormData({ name: "", email: "", phone: "", message: "" })
+    } else {
+      toast.error("Failed to send message")
+    }
+  } catch (error) {
+    toast.dismiss()
+    toast.error("Something went wrong")
+  }
+}
+
 
   const features = [
     { title: "GMP Certified", description: "Manufacturing facility certified by Good Manufacturing Practice" },

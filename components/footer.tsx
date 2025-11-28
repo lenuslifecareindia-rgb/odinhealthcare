@@ -82,12 +82,12 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2 items-start">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-primary-foreground/80">123 Healthcare Lane, Medical City, MC 12345</span>
+                <span className="text-primary-foreground/80">Plot no : 1, Chambaghat, Industrial area, Solan, Himachal Pradesh 173213</span>
               </li>
               <li className="flex gap-2 items-center">
                 <Phone size={18} />
                 <a href="tel:+91234567890" className="hover:text-accent transition-colors">
-                  +91 234 567 890
+                  +91 92186 30464
                 </a>
               </li>
               <li className="flex gap-2 items-center">

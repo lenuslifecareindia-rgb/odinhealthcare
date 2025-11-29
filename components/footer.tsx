@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa";
+import { ImFacebook2 } from "react-icons/im";
 
 export default function Footer() {
   return (
@@ -10,19 +12,25 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Odin Healthcare</h3>
+            <Link href="/" className="flex items-center gap-2">
+              <img src="https://i.ibb.co/hFRbjz7V/New-Project-1.png" className="h-8" alt="Odin Logo" />
+              {/* <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center font-bold text-primary">
+              O
+            </div>
+            <span className="font-bold text-lg hidden sm:inline">Odin Healthcare</span> */}
+            </Link>
             <p className="text-primary-foreground/80 text-sm mb-4">
               Leading PCD pharmaceutical partner providing quality healthcare solutions.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-accent transition-colors">
-                <Linkedin size={20} />
+              <a href="https://wa.me/9218630464?text=Hi%20I%20Rajeev%20can%20I%20Know%20more%20about%20product" target="_blank" className="hover:text-accent transition-colors">
+                <FaWhatsapp className="text-white h-5" />
+              </a>
+              <a href="https://www.facebook.com/odinhc" target="_blank" className="hover:text-accent transition-colors">
+                <ImFacebook2 className="text-white h-5" />
               </a>
               <a href="#" className="hover:text-accent transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                <Facebook size={20} />
+
               </a>
             </div>
           </div>
@@ -81,8 +89,11 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2 items-start">
-                <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-primary-foreground/80">Plot no : 1, Chambaghat, Industrial area, Solan, Himachal Pradesh 173213</span>
+                <a className="flex gap-2 items-start" href="https://www.google.com/maps/place/Odin+Healthcare+Pvt+Ltd/@30.9230785,77.10135,16z/data=!4m6!3m5!1s0x390f87d654088901:0x28e757390261adff!8m2!3d30.9231659!4d77.1023371!16s%2Fg%2F11yp_qw77h?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank">
+                  <MapPin size={18} className="mt-1 flex-shrink-0" />
+                  <span className="text-primary-foreground/80">Plot no : 1, Chambaghat, Industrial area, Solan, Himachal Pradesh 173213</span>
+
+                </a>
               </li>
               <li className="flex gap-2 items-center">
                 <Phone size={18} />

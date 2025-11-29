@@ -31,39 +31,39 @@ export default function Home() {
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
+    e.preventDefault()
 
-  const validation = contactSchema.safeParse(formData)
+    const validation = contactSchema.safeParse(formData)
 
-  if (!validation.success) {
-    const firstError = validation.error.errors[0]?.message
-    toast.error(firstError || "Invalid form inputs")
-    return
-  }
-
-  toast.loading("Sending message...")
-
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-
-    const data = await res.json()
-    toast.dismiss()
-
-    if (data.success) {
-      toast.success("Message sent successfully!")
-      setFormData({ name: "", email: "", phone: "", message: "" })
-    } else {
-      toast.error("Failed to send message")
+    if (!validation.success) {
+      const firstError = validation.error.errors[0]?.message
+      toast.error(firstError || "Invalid form inputs")
+      return
     }
-  } catch (error) {
-    toast.dismiss()
-    toast.error("Something went wrong")
+
+    toast.loading("Sending message...")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+      toast.dismiss()
+
+      if (data.success) {
+        toast.success("Message sent successfully!")
+        setFormData({ name: "", email: "", phone: "", message: "" })
+      } else {
+        toast.error("Failed to send message")
+      }
+    } catch (error) {
+      toast.dismiss()
+      toast.error("Something went wrong")
+    }
   }
-}
 
 
   const features = [
@@ -80,11 +80,27 @@ export default function Home() {
     { name: "Syrups", icon: "🥤" },
   ]
 
+  const imageUrl = "https://i.ibb.co/Qv5WPN6p/New-Project.jpg"
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-blue-900 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="from-primary to-blue-900 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+
+
+        {/* Gradient overlay to improve contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/70 to-blue-900/10" />
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

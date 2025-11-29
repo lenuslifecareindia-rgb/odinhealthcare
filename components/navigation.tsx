@@ -21,10 +21,11 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center font-bold text-primary">
+            <img src="https://i.ibb.co/hFRbjz7V/New-Project-1.png" className="h-8" alt="Odin Logo" />
+            {/* <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center font-bold text-primary">
               O
             </div>
-            <span className="font-bold text-lg hidden sm:inline">Odin Healthcare</span>
+            <span className="font-bold text-lg hidden sm:inline">Odin Healthcare</span> */}
           </Link>
 
           {/* Desktop Navigation */}

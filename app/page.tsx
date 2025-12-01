@@ -221,7 +221,7 @@ export default function Home() {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-accent bg-background"
-                placeholder="+91 234 567 890"
+                placeholder="+91 92186 30464"
               />
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.4 }}>

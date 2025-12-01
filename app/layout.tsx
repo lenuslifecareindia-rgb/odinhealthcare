@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Odin Healthcare | Premium PCD Pharmaceutical Products",
     description: "Discover high-quality pharmaceutical solutions for your healthcare needs.",
-    url: "https://odin-healthcare.com",
+    url: "https://odinhealthcare.in",
     siteName: "Odin Healthcare",
     type: "website",
     locale: "en_IN",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     images: ["/twitter-image.jpg"],
   },
   alternates: {
-    canonical: "https://odin-healthcare.com",
+    canonical: "https://odinhealthcare.in",
   },
 }
 
@@ -89,21 +89,19 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "Odin Healthcare",
               description: "Premium PCD Pharmaceutical Products and Healthcare Solutions",
-              url: "https://odin-healthcare.com",
-              telephone: "+91-234-567-890",
-              email: "info@odinhealth.com",
+              url: "https://odinhealthcare.in",
+              telephone: "+919218630464",
+              email: "info@odinhealth.in",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "123 Healthcare Lane",
-                addressLocality: "Medical City",
-                addressRegion: "MC",
-                postalCode: "12345",
+                streetAddress: "Plot no : 1",
+                addressLocality: "Chambaghat, Industrial area, Solan",
+                addressRegion: "Himachal Pradesh",
+                postalCode: "173213",
                 addressCountry: "IN",
               },
               sameAs: [
-                "https://www.linkedin.com/company/odin-healthcare",
-                "https://www.twitter.com/odinhealth",
-                "https://www.facebook.com/odinhealth",
+                "https://www.facebook.com/odinhc",
               ],
             }),
           }}

@@ -18,6 +18,6 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://odin-healthcare.com/products",
+    canonical: "https://odinhealthcare.in/products",
   },
 }

@@ -11,6 +11,7 @@ interface Product {
   description: string
   price: string
   icon: string
+  image?: string | undefined
 }
 
 const PRODUCTS: Product[] = [
@@ -21,6 +22,7 @@ const PRODUCTS: Product[] = [
     description: "Pain relief and fever reduction tablets",
     price: "₹45",
     icon: "💊",
+    image: "https://placehold.co/400",
   },
   {
     id: "2",
@@ -29,6 +31,7 @@ const PRODUCTS: Product[] = [
     description: "Essential vitamin D supplementation",
     price: "₹120",
     icon: "💊",
+    image: "https://placehold.co/400",
   },
   {
     id: "3",
@@ -37,6 +40,7 @@ const PRODUCTS: Product[] = [
     description: "Complete nutritional support capsules",
     price: "₹180",
     icon: "💉",
+    image: "https://placehold.co/400",
   },
   {
     id: "4",
@@ -45,38 +49,61 @@ const PRODUCTS: Product[] = [
     description: "Heart health omega-3 fatty acids",
     price: "₹250",
     icon: "💉",
+    image: "https://placehold.co/400",
   },
   {
     id: "5",
-    name: "Antibiotic Injection",
+    name: "Acrid",
     category: "Injections",
-    description: "Broad-spectrum antibiotic injection",
+    description: "Clindamycin Injection I.P",
     price: "₹320",
     icon: "🧬",
+    image: "https://i.ibb.co/gZCJW2zB/Acrid.png",
   },
   {
     id: "6",
-    name: "Insulin Injection",
+    name: "Alfadin",
     category: "Injections",
-    description: "Diabetes management injection",
+    description: "Arteether Injection 150mg",
     price: "₹450",
     icon: "🧬",
+    image: "https://i.ibb.co/rRYfyB2V/Alfadin.png",
   },
   {
     id: "7",
-    name: "Cough Syrup",
-    category: "Syrups",
-    description: "Effective cough and cold relief",
+    name: "Caldin Injection",
+    category: "Injections",
+    description: "Vitamin B12, Vitamin D3 & Calcium Gluconolactobionate Injection",
     price: "₹85",
-    icon: "🥤",
+    icon: "🧬",
+    image: "https://i.ibb.co/CKw9j2v8/caldin.png",
   },
   {
     id: "8",
-    name: "Immune Booster Syrup",
-    category: "Syrups",
-    description: "Natural immunity enhancement syrup",
+    name: "Cobaldin-25",
+    category: "Injections",
+    description: "Methylcobalamin Injection",
     price: "₹150",
-    icon: "🥤",
+    icon: "🧬",
+    image: "https://i.ibb.co/zhpKTGc7/cobadin-25.png",
+  },
+  {
+    id: "9",
+    name: "Cobaldin",
+    category: "Injections",
+    description: "Methylcobalamin Injection",
+    price: "₹150",
+    icon: "🧬",
+    image: "https://i.ibb.co/WNwmbb4r/cobadin.jpg",
+  },
+  {
+    id: "10",
+    name: "Cobaldin Forte",
+    category: "Injections",
+    description: "Methylcobalamin,Folic Acid, Niacinamide & Vitamin C Injection",
+    price: "₹150",
+    icon: "🧬",
+    image: "https://i.ibb.co/93spXJBb/cobaldin-forte.png",
   },
 ]
 
@@ -149,9 +176,8 @@ export default function ProductsPage() {
                 <div className="space-y-3">
                   <button
                     onClick={() => setSelectedCategory(null)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
-                      selectedCategory === null ? "bg-accent text-accent-foreground font-semibold" : "hover:bg-muted"
-                    }`}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${selectedCategory === null ? "bg-accent text-accent-foreground font-semibold" : "hover:bg-muted"
+                      }`}
                   >
                     All Products
                   </button>
@@ -160,11 +186,10 @@ export default function ProductsPage() {
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
-                        selectedCategory === category
-                          ? "bg-accent text-accent-foreground font-semibold"
-                          : "hover:bg-muted"
-                      }`}
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all ${selectedCategory === category
+                        ? "bg-accent text-accent-foreground font-semibold"
+                        : "hover:bg-muted"
+                        }`}
                     >
                       {category}
                     </button>
@@ -182,7 +207,7 @@ export default function ProductsPage() {
             {/* Products Grid */}
             <div className="lg:col-span-3">
               {filteredProducts.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map((product, index) => (
                     <motion.div
                       key={product.id}
@@ -191,7 +216,10 @@ export default function ProductsPage() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all cursor-pointer group"
                     >
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{product.icon}</div>
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{product.image ?
+                        <div className="w-full h-full">
+                            <img src={product.image} alt={product.name} />
+                        </div> : product.icon}</div>
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
                         {product.name}
                       </h3>

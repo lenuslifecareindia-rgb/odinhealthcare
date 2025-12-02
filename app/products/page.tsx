@@ -3,109 +3,8 @@
 import { motion } from "framer-motion"
 import { Filter, Search } from "lucide-react"
 import { useState, useMemo } from "react"
-
-interface Product {
-  id: string
-  name: string
-  category: string
-  description: string
-  price: string
-  icon: string
-  image?: string | undefined
-}
-
-const PRODUCTS: Product[] = [
-  {
-    id: "1",
-    name: "Aspirin 500mg",
-    category: "Tablets",
-    description: "Pain relief and fever reduction tablets",
-    price: "₹45",
-    icon: "💊",
-    image: "https://placehold.co/400",
-  },
-  {
-    id: "2",
-    name: "Vitamin D3 Tablets",
-    category: "Tablets",
-    description: "Essential vitamin D supplementation",
-    price: "₹120",
-    icon: "💊",
-    image: "https://placehold.co/400",
-  },
-  {
-    id: "3",
-    name: "Multivitamin Capsules",
-    category: "Capsules",
-    description: "Complete nutritional support capsules",
-    price: "₹180",
-    icon: "💉",
-    image: "https://placehold.co/400",
-  },
-  {
-    id: "4",
-    name: "Omega-3 Softgels",
-    category: "Capsules",
-    description: "Heart health omega-3 fatty acids",
-    price: "₹250",
-    icon: "💉",
-    image: "https://placehold.co/400",
-  },
-  {
-    id: "5",
-    name: "Acrid",
-    category: "Injections",
-    description: "Clindamycin Injection I.P",
-    price: "₹320",
-    icon: "🧬",
-    image: "https://i.ibb.co/gZCJW2zB/Acrid.png",
-  },
-  {
-    id: "6",
-    name: "Alfadin",
-    category: "Injections",
-    description: "Arteether Injection 150mg",
-    price: "₹450",
-    icon: "🧬",
-    image: "https://i.ibb.co/rRYfyB2V/Alfadin.png",
-  },
-  {
-    id: "7",
-    name: "Caldin Injection",
-    category: "Injections",
-    description: "Vitamin B12, Vitamin D3 & Calcium Gluconolactobionate Injection",
-    price: "₹85",
-    icon: "🧬",
-    image: "https://i.ibb.co/CKw9j2v8/caldin.png",
-  },
-  {
-    id: "8",
-    name: "Cobaldin-25",
-    category: "Injections",
-    description: "Methylcobalamin Injection",
-    price: "₹150",
-    icon: "🧬",
-    image: "https://i.ibb.co/zhpKTGc7/cobadin-25.png",
-  },
-  {
-    id: "9",
-    name: "Cobaldin",
-    category: "Injections",
-    description: "Methylcobalamin Injection",
-    price: "₹150",
-    icon: "🧬",
-    image: "https://i.ibb.co/WNwmbb4r/cobadin.jpg",
-  },
-  {
-    id: "10",
-    name: "Cobaldin Forte",
-    category: "Injections",
-    description: "Methylcobalamin,Folic Acid, Niacinamide & Vitamin C Injection",
-    price: "₹150",
-    icon: "🧬",
-    image: "https://i.ibb.co/93spXJBb/cobaldin-forte.png",
-  },
-]
+import Link from "next/link"
+import { PRODUCTS, generateSlug } from "@/utils/products"
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
@@ -172,30 +71,29 @@ export default function ProductsPage() {
                   <Filter size={20} className="text-accent" />
                   <h2 className="text-xl font-semibold">Categories</h2>
                 </div>
-
                 <div className="space-y-3">
                   <button
                     onClick={() => setSelectedCategory(null)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${selectedCategory === null ? "bg-accent text-accent-foreground font-semibold" : "hover:bg-muted"
-                      }`}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
+                      selectedCategory === null ? "bg-accent text-accent-foreground font-semibold" : "hover:bg-muted"
+                    }`}
                   >
                     All Products
                   </button>
-
                   {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all ${selectedCategory === category
-                        ? "bg-accent text-accent-foreground font-semibold"
-                        : "hover:bg-muted"
-                        }`}
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
+                        selectedCategory === category
+                          ? "bg-accent text-accent-foreground font-semibold"
+                          : "hover:bg-muted"
+                      }`}
                     >
                       {category}
                     </button>
                   ))}
                 </div>
-
                 <div className="mt-6 pt-6 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     Showing {filteredProducts.length} of {PRODUCTS.length} products
@@ -216,25 +114,30 @@ export default function ProductsPage() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all cursor-pointer group"
                     >
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{product.image ?
-                        <div className="w-full h-full">
-                            <img src={product.image} alt={product.name} />
-                        </div> : product.icon}</div>
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+                        {product.image ? (
+                          <div className="w-full h-full">
+                            <img src={product.image || "/placeholder.svg"} alt={product.name} />
+                          </div>
+                        ) : (
+                          product.icon
+                        )}
+                      </div>
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-3">{product.description}</p>
-
                       <div className="flex items-center justify-between pt-4 border-t border-border">
                         <span className="inline-block px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
                           {product.category}
                         </span>
                         <span className="text-lg font-bold text-destructive">{product.price}</span>
                       </div>
-
-                      <button className="w-full mt-4 bg-destructive text-destructive-foreground py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all">
-                        View Details
-                      </button>
+                      <Link href={`/products/${generateSlug(product.name)}`}>
+                        <button className="w-full mt-4 bg-destructive text-destructive-foreground py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all">
+                          View Details
+                        </button>
+                      </Link>
                     </motion.div>
                   ))}
                 </div>

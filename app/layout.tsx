@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Odin Healthcare",
   },
   description:
-    "Odin Healthcare provides high-quality pharmaceutical products including tablets, capsules, injections, and more. GMP & ISO certified PCD pharma partner for reliable healthcare solutions.",
+    "Odin Healthcare Pvt Ltd provides high-quality pharmaceutical products including tablets, capsules, injections, and more. GMP & ISO certified PCD pharma partner for reliable healthcare solutions.",
   keywords: [
     "Odin Healthcare Pvt Ltd",
     "PCD pharma",

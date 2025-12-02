@@ -23,7 +23,7 @@ export default function Footer() {
               Leading PCD pharmaceutical partner providing quality healthcare solutions.
             </p>
             <div className="flex gap-4">
-              <a href="https://wa.me/9218630464?text=Hi%20I%20Rajeev%20can%20I%20Know%20more%20about%20product" target="_blank" className="hover:text-accent transition-colors">
+              <a href="https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20product" target="_blank" className="hover:text-accent transition-colors">
                 <FaWhatsapp className="text-white h-5" />
               </a>
               <a href="https://www.facebook.com/odinhc" target="_blank" className="hover:text-accent transition-colors">

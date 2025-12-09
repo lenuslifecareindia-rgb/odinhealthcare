@@ -103,8 +103,8 @@ export default function Footer() {
               </li>
               <li className="flex gap-2 items-center">
                 <Mail size={18} />
-                <a href="mailto:info@odinhealth.com" className="hover:text-accent transition-colors">
-                  info@odinhealth.com
+                <a href="mailto:info@odinhealthcare.in" className="hover:text-accent transition-colors">
+                  info@odinhealthcare.in
                 </a>
               </li>
             </ul>

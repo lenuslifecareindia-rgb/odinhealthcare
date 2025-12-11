@@ -88,12 +88,20 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex gap-2 items-start">
+              <li className="flex flex-col gap-2 items-start">
                 <a className="flex gap-2 items-start" href="https://www.google.com/maps/place/Odin+Healthcare+Pvt+Ltd/@30.9230785,77.10135,16z/data=!4m6!3m5!1s0x390f87d654088901:0x28e757390261adff!8m2!3d30.9231659!4d77.1023371!16s%2Fg%2F11yp_qw77h?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank">
                   <MapPin size={18} className="mt-1 flex-shrink-0" />
                   <span className="text-primary-foreground/80">Plot no : 1, Chambaghat, Industrial area, Solan, Himachal Pradesh 173213</span>
 
                 </a>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d213.91841227050998!2d77.10229844034791!3d30.923159649340803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f87d654088901%3A0x28e757390261adff!2sOdin%20Healthcare%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1765452720540!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full rounded-2xl"
+                ></iframe>
               </li>
               <li className="flex gap-2 items-center">
                 <Phone size={18} />

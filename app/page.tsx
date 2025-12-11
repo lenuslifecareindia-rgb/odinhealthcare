@@ -3,11 +3,12 @@
 import type React from "react"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Check } from "lucide-react"
+import { ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { z } from "zod"
 import toast from "react-hot-toast"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,6 +30,17 @@ export default function Home() {
     phone: "",
     message: "",
   })
+  const [carouselApi, setCarouselApi] = useState<any>(null)
+
+  useEffect(() => {
+    if (!carouselApi) return
+
+    const interval = setInterval(() => {
+      carouselApi.scrollNext()
+    }, 10000) // Auto-scroll every 10 seconds
+
+    return () => clearInterval(interval)
+  }, [carouselApi])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -80,58 +92,136 @@ export default function Home() {
     { name: "Syrups", icon: "🥤" },
   ]
 
-  const imageUrl = "https://i.ibb.co/Qv5WPN6p/New-Project.jpg"
+  const heroSlides = [
+    {
+      title: "Premium Healthcare Solutions",
+      description: "Odin Healthcare delivers high-quality pharmaceutical products with trusted certifications and excellence in every product",
+      image: "https://i.ibb.co/Qv5WPN6p/New-Project.jpg",
+      ctaText: "Explore Products",
+      ctaLink: "/products",
+    },
+    {
+      title: "GMP Certified Excellence",
+      description: "Manufacturing facility certified by Good Manufacturing Practice ensuring the highest quality standards",
+      image: "https://i.ibb.co/mCQGcmpk/Chat-GPT-Image-Dec-10-2025-11-50-17-PM.png",
+      ctaText: "Learn More",
+      ctaLink: "/products",
+    },
+    {
+      title: "Wide Range of Products",
+      description: "Extensive portfolio of pharmaceutical products across multiple categories for all your healthcare needs",
+      image: "https://i.ibb.co/V0jvtgFs/Chat-GPT-Image-Dec-11-2025-11-37-35-AM.png",
+      ctaText: "View Catalog",
+      ctaLink: "/products",
+    },
+  ]
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="from-primary to-blue-900 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+      {/* Hero Carousel Section */}
+      <section className="relative overflow-hidden">
+        <Carousel className="w-full" opts={{ loop: true }} setApi={setCarouselApi}>
+          <CarouselContent>
+            {heroSlides.map((slide, index) => (
+              <CarouselItem key={index}>
+                <div className="from-primary to-blue-900 text-primary-foreground py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-96">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage: `url(${slide.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
 
+                  {/* Gradient overlay to improve contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/70 to-blue-900/10" />
+                  <div className="max-w-7xl mx-auto relative z-10">
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="text-center"
+                    >
+                      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-balance">
+                        {slide.title}
+                      </h1>
+                      <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto text-balance">
+                        {slide.description}
+                      </p>
+                      <div className="flex gap-4 justify-center flex-wrap">
+                        <Link
+                          href={slide.ctaLink}
+                          className="bg-destructive text-destructive-foreground px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all inline-flex items-center gap-2"
+                        >
+                          {slide.ctaText} <ArrowRight size={20} />
+                        </Link>
+                        <a
+                          href="#contact"
+                          className="bg-primary-foreground text-primary px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all"
+                        >
+                          Contact Us
+                        </a>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20" />
+        </Carousel>
+      </section>
+      {/* Welcome Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 {...fadeInUp} className="text-3xl font-bold text-center mb-12">
+            Welcome to Odin Healthcare
+          </motion.h2>
+          <div className="flex flex-col-reverse md:flex-row items-center md:space-x-8 space-y-6 md:space-y-0 max-w-5xl mx-auto gap-6">
 
-        {/* Gradient overlay to improve contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/70 to-blue-900/10" />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-balance">
-              Premium Healthcare Solutions
-            </h1>
-            <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto text-balance">
-              Odin Healthcare delivers high-quality pharmaceutical products with trusted certifications and excellence
-              in every product
-            </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Link
-                href="/products"
-                className="bg-destructive text-destructive-foreground px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all inline-flex items-center gap-2"
-              >
-                Explore Products <ArrowRight size={20} />
-              </Link>
-              <a
-                href="#contact"
-                className="bg-primary-foreground text-primary px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all"
-              >
-                Contact Us
-              </a>
+            {/* Left Content */}
+            <article className="flex-1 space-y-4">
+              <h3 className="text-2xl font-semibold text-[#59AC77]">
+                Your Trusted ISO 9001:2015-Certified Pharmaceutical Partner
+              </h3>
+
+              <p className="text-gray-700 leading-relaxed">
+                Odin Health Care Pvt. Ltd. is an ISO 9001:2015–certified pharmaceutical
+                company offering a wide portfolio of GMP-WHO certified products across
+                Dermatology & Cosmetics, Cardiology & Diabetology, General Medicine,
+                Critical Care, Dental Care, Ophthalmology, Gynecology, and Pediatrics.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+                We provide PAN India <strong>PCD Pharma Franchise</strong> opportunities with
+                <strong> exclusive monopoly rights</strong>, ensuring our partners grow with complete
+                support. This includes promotional materials, marketing assistance,
+                competitive pricing, and timely delivery of top-quality products.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+                At Odin Health Care, we focus on long-term partnerships built on trust,
+                innovation, and professional support to help you succeed in the
+                fast-growing pharmaceutical industry.
+              </p>
+            </article>
+
+            {/* Right Image */}
+            <div className="flex-1">
+              <img
+                src="https://i.ibb.co/tw4nQxMm/product-image.png"
+                alt="Odin Healthcare Pharmaceuticals - Product and Franchise Overview"
+                className="w-full h-auto rounded-lg shadow-md object-cover"
+              />
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card">
         <div className="max-w-7xl mx-auto">

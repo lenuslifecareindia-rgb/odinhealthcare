@@ -10,7 +10,7 @@ interface ProductDetailsClientProps {
     relatedProducts: Product[]
 }
 
-export default function ProductDetailsClient({ product, relatedProducts }: ProductDetailsClientProps) {
+export default function     ProductDetailsClient({ product, relatedProducts }: ProductDetailsClientProps) {
     return (
         <main className="min-h-screen bg-background">
             {/* Header Section */}
@@ -65,7 +65,7 @@ export default function ProductDetailsClient({ product, relatedProducts }: Produ
                         >
                             <div className="bg-card border border-border rounded-lg p-8">
                                 <div className="flex items-center gap-3 mb-6">
-                                    <span className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-accent/10 text-accent rounded-full">
+                                    <span className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-primary text-white rounded-full">
                                         <Tag size={16} />
                                         {product.Category}
                                     </span>
@@ -79,10 +79,18 @@ export default function ProductDetailsClient({ product, relatedProducts }: Produ
                                     <span className="text-muted-foreground">Category:</span>
                                     <span className="font-medium">{product.Category}</span>
                                 </div>
+                                <div className="flex items-center gap-2 mb-8 pb-6 border-b border-border">
+                                    <Package size={20} className="text-accent" />
+                                    <span className="text-muted-foreground">Sub-Category:</span>
+                                    <span className="font-medium">{product["Sub-category"]} ,{product["Sub-Sub-Category"]}</span>
+                                </div>
 
                                 <div className="flex items-center justify-between mb-8">
                                     <span className="text-muted-foreground text-lg">Price</span>
-                                    <span className="text-4xl font-bold text-destructive">{product.Mrp}</span>
+                                    {/* <span className="text-4xl font-bold text-destructive">{product.Mrp}</span> */}
+                                    <a href={`https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20${product.Name}%20${product.Category}`} target="_blank" className="hover:text-accent transition-colors">
+                                        <span className="text-4xl font-bold text-destructive">XXX</span>
+                                    </a>
                                 </div>
                                 <a href={`https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20${product.Name}%20${product.Category}`} target="_blank" className="hover:text-accent transition-colors">
                                     <button className="w-full bg-destructive text-destructive-foreground py-4 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-all">
@@ -143,7 +151,10 @@ export default function ProductDetailsClient({ product, relatedProducts }: Produ
                                                     <span className="inline-block px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
                                                         {relatedProduct.Category}
                                                     </span>
-                                                    <span className="text-lg font-bold text-destructive">{relatedProduct.Mrp}</span>
+                                                    {/* <span className="text-lg font-bold text-destructive">{relatedProduct.Mrp}</span> */}
+                                                    <a href={`https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20${product.Name}%20${product.Category}`} target="_blank" className="hover:text-accent transition-colors">
+                                                        <span className="text-lg font-bold text-destructive">XXX</span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </Link>

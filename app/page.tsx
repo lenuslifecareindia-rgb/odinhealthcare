@@ -189,21 +189,21 @@ export default function Home() {
                 Your Trusted ISO 9001:2015-Certified Pharmaceutical Partner
               </h3>
 
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 Odin Health Care Pvt. Ltd. is an ISO 9001:2015–certified pharmaceutical
                 company offering a wide portfolio of GMP-WHO certified products across
                 Dermatology & Cosmetics, Cardiology & Diabetology, General Medicine,
                 Critical Care, Dental Care, Ophthalmology, Gynecology, and Pediatrics.
               </p>
 
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 We provide PAN India <strong>PCD Pharma Franchise</strong> opportunities with
                 <strong> exclusive monopoly rights</strong>, ensuring our partners grow with complete
                 support. This includes promotional materials, marketing assistance,
                 competitive pricing, and timely delivery of top-quality products.
               </p>
 
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 At Odin Health Care, we focus on long-term partnerships built on trust,
                 innovation, and professional support to help you succeed in the
                 fast-growing pharmaceutical industry.

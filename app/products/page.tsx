@@ -10,14 +10,14 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
 
-  const categories = Array.from(new Set(PRODUCTS.map((p) => p.category)))
+  const categories = Array.from(new Set(PRODUCTS.map((p) => p.Category)))
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
-      const matchesCategory = !selectedCategory || product.category === selectedCategory
+      const matchesCategory = !selectedCategory || product.Category === selectedCategory
       const matchesSearch =
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+        product.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.Composition.toLowerCase().includes(searchTerm.toLowerCase())
       return matchesCategory && matchesSearch
     })
   }, [selectedCategory, searchTerm])
@@ -108,32 +108,34 @@ export default function ProductsPage() {
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map((product, index) => (
                     <motion.div
-                      key={product.id}
+                      key={product.Id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all cursor-pointer group"
                     >
                       <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                        {product.image ? (
+                        {product["Image-link"] ? (
                           <div className="w-full h-full">
-                            <img src={product.image || "/placeholder.svg"} alt={product.name} />
+                            <img src={product["Image-link"] || "/placeholder.svg"} alt={product.Name} />
                           </div>
                         ) : (
-                          product.icon
+                          <div className="w-full h-full">
+                            <img src={"/odin.png"} alt={product.Name} />
+                          </div>
                         )}
                       </div>
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
-                        {product.name}
+                        {product.Name}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-3">{product.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3">{product.Composition}</p>
                       <div className="flex items-center justify-between pt-4 border-t border-border">
                         <span className="inline-block px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
-                          {product.category}
+                          {product.Category}
                         </span>
-                        <span className="text-lg font-bold text-destructive">{product.price}</span>
+                        <span className="text-lg font-bold text-destructive">{product.Mrp}</span>
                       </div>
-                      <Link href={`/products/${generateSlug(product.name)}`}>
+                      <Link href={`/products/${generateSlug(product.Name)}`}>
                         <button className="w-full mt-4 bg-destructive text-destructive-foreground py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all">
                           View Details
                         </button>

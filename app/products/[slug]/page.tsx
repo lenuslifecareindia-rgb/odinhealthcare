@@ -8,7 +8,7 @@ interface ProductPageProps {
 
 export async function generateStaticParams() {
   return PRODUCTS.map((product) => ({
-    slug: generateSlug(product.name),
+    slug: generateSlug(product.Name),
   }))
 }
 
@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: ProductPageProps) {
   }
 
   return {
-    title: `${product.name} - Odin Healthcare`,
-    description: product.description,
+    title: `${product.Name} - Odin Healthcare`,
+    Composition: product.Composition,
   }
 }
 
@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
-  const relatedProducts = getRelatedProducts(product.category, product.id)
+  const relatedProducts = getRelatedProducts(product.Category, product.Id)
 
   return <ProductDetailsClient product={product} relatedProducts={relatedProducts} />
 }

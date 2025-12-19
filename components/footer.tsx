@@ -24,10 +24,10 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a href="https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20product" target="_blank" className="hover:text-accent transition-colors">
-                <FaWhatsapp className="text-white h-5" />
+                <FaWhatsapp size={25} className="text-white" />
               </a>
               <a href="https://www.facebook.com/odinhc" target="_blank" className="hover:text-accent transition-colors">
-                <ImFacebook2 className="text-white h-5" />
+                <ImFacebook2 size={25} className="text-white" />
               </a>
               <a href="#" className="hover:text-accent transition-colors">
 

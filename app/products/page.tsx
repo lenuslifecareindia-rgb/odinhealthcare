@@ -162,7 +162,7 @@ export default function ProductsPage() {
             </motion.aside>
 
             {/* Products Grid */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 w-full">
               {filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProducts.map((product, index) => (
@@ -171,7 +171,7 @@ export default function ProductsPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all cursor-pointer group"
+                      className="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all cursor-pointer group text-ellipsis overflow-hidden"
                     >
 
                       <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
@@ -188,14 +188,14 @@ export default function ProductsPage() {
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
                         {product.Name}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-3">{product.Composition}</p>
-                      <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground mb-3 w-full text-ellipsis overflow-hidden text-nowrap">{product.Composition}</p>
+                      <div className="flex flex-col md:flex-row items-center justify-between pt-4 border-t border-border">
                         <span className="inline-block px-3 py-1 text-xs font-medium bg-primary text-white rounded-full">
                           {product.Category}
                         </span>
                         {/* <span className="text-lg font-bold text-destructive">{product.Mrp}</span> */}
                         <a href={`https://wa.me/9218630464?text=Hi%20Rajeev%20can%20I%20Know%20more%20about%20${product.Name}%20${product.Category}`} target="_blank" className="hover:text-accent transition-colors">
-                          <span className="text-lg font-bold text-destructive">Know More</span>
+                          <span className="text-sm font-bold text-destructive">Know More</span>
                         </a>
                       </div>
                       <Link href={`/products/${generateSlug(product.Name)}`}>

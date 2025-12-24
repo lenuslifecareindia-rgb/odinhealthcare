@@ -32,7 +32,7 @@ export function getProductBySlug(slug: string): Product | undefined {
 }
 
 // Helper function to get related products by category
-export function getRelatedProducts(category: string, subcategory: string, subsubcategory: string, excludeId: number): Product[] {
-  return PRODUCTS.filter((product) => product.Category === category && product["Sub-category"] === subcategory && product["Sub-Sub-Category"] === subsubcategory && product.Id !== excludeId).slice(0, 3)
+export function getRelatedProducts(subsubcategory: string, excludeId: number): Product[] {
+  return PRODUCTS.filter((product) =>  product["Sub-Sub-Category"] === subsubcategory && product.Id !== excludeId).slice(0, 3)
 }
 

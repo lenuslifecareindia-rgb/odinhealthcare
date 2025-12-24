@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
-  const relatedProducts = getRelatedProducts(product.Category,product["Sub-category"],product["Sub-Sub-Category"], product.Id)
+  const relatedProducts = getRelatedProducts(product["Sub-Sub-Category"], product.Id)
 
   return <ProductDetailsClient product={product} relatedProducts={relatedProducts} />
 }

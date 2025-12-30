@@ -30,10 +30,10 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pl-8">
                         <h2 className="text-2xl font-semibold mb-4">About Odin Healthcare Pvt. Ltd.</h2>
-                        <p className="text-gray-700">
+                        <p className="text-justify text-gray-700">
                             <strong>Odin Healthcare Pvt. Ltd.</strong> is a trusted and fast-growing Indian pharmaceutical company, established with commitment to deliver high-quality, affordable medicines while creating profitable and long-term opportunities for PCD Pharma Franchise partners across India.
                         </p>
-                        <p className="text-gray-700 mt-4">
+                        <p className="text-justify text-gray-700 mt-4">
                             Founded by <strong>Mr. Raman Aggarwal</strong>, Odin Healthcare started its journey with only 7 products and has today grown into a strong pharmaceutical organization with a portfolio of 350+ products covering multiple therapeutic segments. Our consistent growth reflects our focus on quality, ethical practices, and partner-centric business models.
                         </p>
                     </div>
@@ -54,7 +54,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pr-8">
                         <h2 className="text-2xl font-semibold mb-4">Why Choose Odin Healthcare for PCD Franchise?</h2>
-                        <p className="text-gray-700">
+                        <p className="text-justify text-gray-700">
                             At Odin Healthcare, we believe that our success lies in the success of our franchise partners. We offer <strong>PAN-India PCD Pharma Franchise opportunities</strong> with exclusive monopoly rights, ensuring no internal competition and maximum growth potential for our associates.
                         </p>
                     </div>
@@ -75,7 +75,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pl-8">
                         <h2 className="text-2xl font-semibold mb-4">Our Key Strengths</h2>
-                        <ul className="list-disc list-inside text-gray-700">
+                        <ul className="list-disc list-inside text-gray-700 text-justify">
                             <li>350+ Quality-Assured Products across major therapeutic segments</li>
                             <li>WHO-GMP Certified Manufacturing through our own unit, <a className='text-blue-500 underline font-semibold' href="https://www.lenuslifecare.com/" target='_blank'>Lenus Lifecare Pvt. Ltd.</a>, and reputed associate manufacturers</li>
                             <li>Monopoly-Based PCD Franchise Model</li>
@@ -101,7 +101,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pr-8">
                         <h2 className="text-2xl font-semibold mb-4">Manufacturing & Quality Assurance</h2>
-                        <p className="text-gray-700">
+                        <p className="text-justify text-gray-700">
                             Quality is the backbone of Odin Healthcare. Our in-house manufacturing facility, Lenus Lifecare Pvt. Ltd., is WHO-GMP certified and manufactures injections, ointments, soft gelatin capsules, and ophthalmic products. Tablets, capsules, syrups, and suspensions are produced through carefully selected WHO-GMP approved third-party manufacturers, ensuring strict quality control at every stage.
                         </p>
                     </div>
@@ -122,7 +122,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pl-8">
                         <h2 className="text-2xl font-semibold mb-4">Wide Therapeutic Product Range</h2>
-                        <p className="text-gray-700 mb-4">
+                        <p className="text-justify text-gray-700 mb-4">
                             Our diversified product portfolio enables franchise partners to cover multiple medical specialties, including:
                         </p>
                         <ul className="list-disc list-inside text-gray-700">
@@ -136,7 +136,7 @@ export default function AboutUs() {
                             <li>Dental Care</li>
                             <li>Critical Care</li>
                         </ul>
-                        <p className="text-gray-700 mt-4">
+                        <p className="text-justify text-gray-700 mt-4">
                             This wide coverage helps our PCD partners build strong doctor networks and expand business rapidly in their respective territories.
                         </p>
                     </div>
@@ -157,7 +157,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pr-8">
                         <h2 className="text-2xl font-semibold mb-4">Complete Franchise Support</h2>
-                        <p className="text-gray-700 mb-4">
+                        <p className="text-justify text-gray-700 mb-4">
                             To ensure smooth business operations and market success, Odin Healthcare provides:
                         </p>
                         <ul className="list-disc list-inside text-gray-700">
@@ -167,7 +167,7 @@ export default function AboutUs() {
                             <li>Dedicated support team</li>
                             <li>Long-term association focus</li>
                         </ul>
-                        <p className="text-gray-700 mt-4">
+                        <p className="text-justify text-gray-700 mt-4">
                             With a growing network of 100+ successful PCD associates across India, Odin Healthcare continues to strengthen its presence as a preferred PCD Pharma Company.
                         </p>
                     </div>
@@ -188,7 +188,7 @@ export default function AboutUs() {
                     </div>
                     <div className="md:w-1/2 md:pl-8">
                         <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
-                        <p className="text-gray-700">
+                        <p className="text-justify text-gray-700">
                             To become a leading PCD-focused pharmaceutical company by offering reliable medicines, ethical business practices, and growth-driven franchise opportunities that contribute to better healthcare access across India.
                         </p>
                     </div>

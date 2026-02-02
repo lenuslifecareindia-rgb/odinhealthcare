@@ -22,14 +22,21 @@ import("./product").then((module) => {
 export function generateSlug(name: string): string {
   return name
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "")
+    .trim()                         // ✅ remove leading/trailing spaces
+    .replace(/[^a-z0-9]+/g, "-")    // ✅ collapse all non-alphanum to single hyphen
+    .replace(/^-+|-+$/g, "")        // ✅ remove leading/trailing hyphens
 }
+
 
 // Helper function to find product by slug
 export function getProductBySlug(slug: string): Product | undefined {
-  return PRODUCTS.find((product) => generateSlug(product.Name) === slug)
+  const cleanSlug = slug.replace(/-+$/, "") // remove trailing hyphens
+
+  return PRODUCTS.find(
+    (product) => generateSlug(product.Name) === cleanSlug
+  )
 }
+
 
 // Helper function to get related products by category
 export function getRelatedProducts(subsubcategory: string, excludeId: number): Product[] {

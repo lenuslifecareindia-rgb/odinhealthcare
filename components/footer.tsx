@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
-import { FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { ImFacebook2 } from "react-icons/im";
 
 export default function Footer() {
@@ -29,8 +29,8 @@ export default function Footer() {
               <a href="https://www.facebook.com/odinhc" target="_blank" className="hover:text-accent transition-colors">
                 <ImFacebook2 size={25} className="text-white" />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
-
+              <a href="https://www.instagram.com/odin_healthcare_" target="_blank" className="hover:text-accent transition-colors">
+                  <FaInstagram size={25} className="text-white" />
               </a>
             </div>
           </div>
